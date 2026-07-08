@@ -1,0 +1,29 @@
+{
+  "name": "reno",
+  "version": "1.0.0",
+  "description": "A responsive notice board built with Next.js Pages Router and Prisma",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prisma": "prisma"
+  },
+  "keywords": [
+    "nextjs",
+    "prisma",
+    "notice-board"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^7.8.0",
+    "next": "^14.2.15",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "prisma": "^7.8.0"
+  }
+}

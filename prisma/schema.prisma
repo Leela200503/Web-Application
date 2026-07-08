@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model Notice {
+  id          Int      @id @default(autoincrement())
+  title       String   @db.VarChar(255)
+  body        String   @db.Text
+  category    String   @db.VarChar(50)
+  priority    String   @db.VarChar(20)
+  publishDate DateTime @db.Date
+  image       String?  @db.VarChar(255)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
