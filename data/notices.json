@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": 1783498412019,
+    "title": "Test",
+    "body": "Body",
+    "category": "General",
+    "priority": "Normal",
+    "publishDate": "2026-07-08T00:00:00.000Z",
+    "image": null,
+    "createdAt": "2026-07-08T08:13:32.019Z",
+    "updatedAt": "2026-07-08T08:13:32.069Z"
+  }
+]
