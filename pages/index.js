@@ -22,10 +22,16 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true);
 
   const refreshNotices = async () => {
-    const response = await fetch('/api/notices');
-    const data = await response.json();
-    setNotices(data.notices || []);
-    setLoading(false);
+    try {
+      const response = await fetch('/api/notices');
+      const text = await response.text();
+      const data = text ? JSON.parse(text) : {};
+      setNotices(data.notices || []);
+    } catch {
+      setNotices([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -77,7 +83,14 @@ export default function HomePage() {
       body: JSON.stringify(payload),
     });
 
-    const data = await response.json();
+    const text = await response.text();
+    let data = {};
+    try {
+      data = text ? JSON.parse(text) : {};
+    } catch {
+      data = { error: text || 'Unexpected server response.' };
+    }
+
     if (!response.ok) {
       setStatus(data.error || 'Unable to save notice.');
       return;
@@ -99,7 +112,14 @@ export default function HomePage() {
     if (!confirmed) return;
 
     const response = await fetch(`/api/notices/${id}`, { method: 'DELETE' });
-    const data = await response.json();
+    const text = await response.text();
+    let data = {};
+    try {
+      data = text ? JSON.parse(text) : {};
+    } catch {
+      data = { error: text || 'Unexpected server response.' };
+    }
+
     if (!response.ok) {
       setStatus(data.error || 'Unable to delete notice.');
       return;
